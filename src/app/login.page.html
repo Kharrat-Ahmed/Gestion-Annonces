@@ -1,0 +1,56 @@
+<!-- login.page.html -->
+<!-- home.page.html -->
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">
+      Bienvenue sur l'Application d'Annonces
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1.5" class="ion-text-start">
+        <!-- Move the logo to the left -->
+        <img src="assets/images/logo.png" alt="Logo de l'application" class="app-logo">
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <!-- Remove card styling for simplicity -->
+        <ion-list lines="full">
+          <ion-item routerLink="/annonces">
+            <ion-icon name="newspaper-outline" slot="start"></ion-icon>
+            <ion-label>Consulter les annonces</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating">Username</ion-label>
+    <ion-input [(ngModel)]="username" type="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input [(ngModel)]="password" type="password"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="loginFire()">Login</ion-button>
+
+  <ion-button expand="full" [routerLink]="['/signup']">signup</ion-button>
+
+</ion-content>

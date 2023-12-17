@@ -1,0 +1,39 @@
+<!-- ajout-annonce.page.html -->
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Ajouter une Annonce</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Titre de l'annonce</ion-label>
+      <ion-input [(ngModel)]="nouvelleAnnonce.titre" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea [(ngModel)]="nouvelleAnnonce.description" required></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Catégorie</ion-label>
+      <ion-input [(ngModel)]="nouvelleAnnonce.categorie" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Prix</ion-label>
+      <ion-input [(ngModel)]="nouvelleAnnonce.prix" required></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="ajouterAnnonce()">Ajouter l'annonce</ion-button>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home/annonces"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>

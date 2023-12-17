@@ -1,0 +1,26 @@
+<!-- details-annonce.page.html -->
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Détails de l'Annonce</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ annonce.titre }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-thumbnail slot="start">
+        <!-- Ajoutez ici l'image de l'annonce si disponible -->
+        <img *ngIf="annonce.image" [src]="annonce.image" alt="Image de l'annonce">
+      </ion-thumbnail>
+
+      <p>{{ annonce.description }}</p>
+      <p>Catégorie : {{ annonce.categorie }}</p>
+      <!-- Ajoutez d'autres détails de l'annonce ici -->
+    </ion-card-content>
+  </ion-card>
+</ion-content>

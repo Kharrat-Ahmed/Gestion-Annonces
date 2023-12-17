@@ -1,0 +1,37 @@
+/* home.page.scss */
+
+ion-content {
+  --ion-background-color: #f4f4f4;
+}
+
+.app-logo {
+  max-width: 200px;
+  max-height: 200px;
+  margin-top: 20px;
+}
+
+ion-card {
+  margin: 20px auto;
+  max-width: 400px;
+
+  ion-card-header {
+    --ion-background-color: #3880ff;
+    color: #fff;
+  }
+
+  ion-card-content {
+    ion-list {
+      ion-item {
+        --ion-background-color: #fff;
+
+        ion-icon {
+          color: #3880ff;
+        }
+
+        ion-label {
+          color: #333;
+        }
+      }
+    }
+  }
+}

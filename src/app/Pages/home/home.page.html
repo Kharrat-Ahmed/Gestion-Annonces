@@ -1,0 +1,67 @@
+<!-- home.page.html -->
+
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">
+      Bienvenue sur l'Application d'Annonces
+      <span *ngIf="getCurrentUser()">, {{ getCurrentUser() }}</span>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+<ion-modal [keepContentsMounted]="true">
+  <ng-template>
+    <ion-datetime id="datetime"></ion-datetime>
+  </ng-template>
+</ion-modal>
+
+<ion-searchbar show-clear-button="focus" value="Show on Focus"></ion-searchbar>
+<ion-searchbar show-clear-button="always" value="Always Show"></ion-searchbar>
+<ion-searchbar show-clear-button="never" value="Never Show"></ion-searchbar>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-text-start">
+        <!-- Move the logo to the left -->
+        <img src="assets/images/logo.png" alt="Logo de l'application" class="app-logo">
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <!-- Remove card styling for simplicity -->
+        <ion-list lines="full">
+          <ion-item routerLink="/annonces">
+            <ion-icon name="newspaper-outline" slot="start"></ion-icon>
+            <ion-label>Consulter les annonces</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/ajout-annonce">
+            <ion-icon name="create-outline" slot="start"></ion-icon>
+            <ion-label>Ajouter une annonce</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/mes-annonces">
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+            <ion-label>Mes annonces</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <!-- Use a custom button for logout -->
+        <ion-button (click)="logout()">
+          Logout
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>

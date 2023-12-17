@@ -1,0 +1,22 @@
+/* details-annonce.page.scss */
+
+ion-content {
+  --ion-background-color: #f4f4f4;
+}
+
+ion-card {
+  margin-top: 20px;
+}
+
+ion-thumbnail {
+  width: 100%;
+  max-width: 120px;
+  max-height: 120px;
+  margin-right: 10px;
+}
+
+ion-card-content {
+  p {
+    color: #333;
+  }
+}

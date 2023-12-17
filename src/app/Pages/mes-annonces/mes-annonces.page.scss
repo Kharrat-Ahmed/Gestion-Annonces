@@ -1,0 +1,23 @@
+/* mes-annonces.page.scss */
+
+ion-content {
+  --ion-background-color: #f4f4f4;
+}
+
+ion-thumbnail {
+  width: 80px;
+  height: 80px;
+}
+
+ion-item {
+  ion-label {
+    h2 {
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+
+    p {
+      color: #777;
+    }
+  }
+}

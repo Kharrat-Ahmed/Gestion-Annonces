@@ -1,0 +1,36 @@
+/* login.page.scss */
+
+ion-content {
+  --background: #f4f4f4; /* Set the background color for the content area */
+}
+
+ion-card {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+ion-card-header {
+  text-align: center;
+}
+
+ion-card-content {
+  padding: 20px;
+}
+
+ion-button {
+  --background: #3880ff; /* Set the background color for buttons */
+  --color: #ffffff; /* Set the text color for buttons */
+  width: 100%;
+  margin-top: 20px;
+}
+
+ion-input {
+  margin-bottom: 15px;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+  text-align: center;
+}

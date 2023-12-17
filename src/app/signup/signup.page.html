@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input [(ngModel)]="userData.email" type="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input [(ngModel)]="userData.password" type="password" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input [(ngModel)]="userData.username" required></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="full" (click)="signup()">Sign Up</ion-button>
+
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>
