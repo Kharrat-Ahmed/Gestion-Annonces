@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';     // Import FormsModule
 import { IonicModule } from '@ionic/angular';
 import { AnnonceLocalService } from 'src/app/annonce-local.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mes-annonces',
@@ -13,20 +15,29 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MesAnnoncesPage {
   mesAnnonces: any[] = [];
+  current:any
+  constructor(private router:Router,private annonceService: AnnonceLocalService,private auth: AngularFireAuth, private fb :AuthService
 
-  constructor(private annonceService: AnnonceLocalService, private fb :AuthService
+    ) {
 
-    ) {}
+          // Si un utilisateur est connecté, mettre à jour les données utilisateur et les stocker localement
+          this.current = JSON.parse(localStorage.getItem('user'))
+
+    }
 
   ionViewDidEnter() {
-    this.loadMesAnnonces();
+    if(this.current){
+      this.loadMesAnnonces();
+
+    }
   }
 
   loadMesAnnonces() {
-    this.fb.getPosts().subscribe(
-      (mesannonces) => {
-        this.mesAnnonces = mesannonces;
-        console.log('Publications par catégorie "moto":', this.mesAnnonces);
+    console.log("--------",this.current.uid);
+    this.fb.getPostsByUser(this.current.uid).subscribe(
+      (result) => {
+        console.log(result);
+        this.mesAnnonces = result;
 
       },
       (error) => {

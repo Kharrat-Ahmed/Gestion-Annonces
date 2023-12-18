@@ -7,12 +7,26 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-
+  userData:any
   constructor(
     public firestore: AngularFirestore,
     public auth: AngularFireAuth,
 
-  ) { }
+  ) {
+    this.auth.authState.subscribe((user) => {
+      if (user) {
+        // Si un utilisateur est connecté, mettre à jour les données utilisateur et les stocker localement
+        this.userData = user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('user')!);
+      } else {
+        // Si aucun utilisateur n'est connecté, stocker une valeur nulle localement
+        localStorage.setItem('user', 'null');
+        JSON.parse(localStorage.getItem('user')!);
+      }
+    });
+   }
+
 
 // Fonction de connexion avec l'email et le mot de passe
 loginWithEmail(login: any,pass : any): Promise<any> {
@@ -46,6 +60,7 @@ private mapDocumentChange(action: DocumentChangeAction<any>): any {
 
 // Récupérer une publication par ID
 getPostById(postId: string): Observable<any> {
+  console.log(postId);
   return this.firestore.collection('annonces').doc(postId).snapshotChanges().pipe(
     map(action => this.formatResult(action.payload))
   );
@@ -58,7 +73,12 @@ getPostById(postId: string): Observable<any> {
     return { id, ...data };
   }
   getPosts(): Observable<any[]> {
-    return this.firestore.collection('posts').snapshotChanges().pipe(
+    return this.firestore.collection('annonces').snapshotChanges().pipe(
+      map(actions => actions.map(action => this.mapDocumentChange(action)))
+    );
+  }
+  getPostsByUser(id: string): Observable<any[]> {
+    return this.firestore.collection('annonces', ref => ref.where('userId', '==', id)).snapshotChanges().pipe(
       map(actions => actions.map(action => this.mapDocumentChange(action)))
     );
   }

@@ -2,6 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { AnnonceService } from '../../services/annonce.service'; // Adjust the path based on your actual service location
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-annonces',
@@ -11,7 +12,7 @@ import { AnnonceService } from '../../services/annonce.service'; // Adjust the p
 export class AnnoncesPage implements OnInit {
   annonces: any[] = [];
 
-  constructor(private annonceService: AnnonceService) {}
+  constructor(private annonceService: AnnonceService,private fb : AuthService) {}
 
   ngOnInit() {
     this.loadAnnonces();
@@ -19,7 +20,7 @@ export class AnnoncesPage implements OnInit {
 
   private loadAnnonces() {
     // Assuming AnnonceService has a method to fetch annonces, adjust accordingly
-    this.annonceService.getAnnonces().subscribe(
+    this.fb.getPosts().subscribe(
       (data) => {
         this.annonces = data; // Assuming data is an array of annonce objects
       },
